@@ -55,3 +55,11 @@ DELETE FROM Employees
 	WHERE EmployeeID=1;
 -- Deleting multiple Records
 DELETE FROM Employees WHERE Salary < 100000;
+
+-- MySQL Alter Table
+/*
+The ALTER TABLE statement modifies the structure of an existing table.
+It can add, modify, or drop columns and constraints.
+*/
+
+-- Add a Column to an Existing Table
