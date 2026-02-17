@@ -40,7 +40,7 @@ SELECT * FROM  Employees where LastName is NULL or HireDate is NULL;
 -- MySQL Update Statement
 
 UPDATE Employees
-set LastName="Bh." where EmployeeID=6;
+set LastName='Bh.' where EmployeeID=6;
 
 SELECT * FROM Employees;
 
@@ -63,3 +63,36 @@ It can add, modify, or drop columns and constraints.
 */
 
 -- Add a Column to an Existing Table
+ALTER TABLE Employees 
+ADD COLUMN PhoneNumber varchar(25);
+
+SELECT * FROM Employees;
+
+-- Add Multiple Columns
+ALTER TABLE Employees 
+ADD COLUMN MiddleName varchar(25),
+ADD COLUMN DateOfBirth date;
+
+-- Modify/Alter the column
+
+-- Changing the Datatype
+ALTER TABLE Employees 
+MODIFY COLUMN PhoneNumber varchar(20);
+
+ALTER TABLE Employees
+MODIFY COLUMN Salary int;
+INSERT INTO Employees values(7, 'Maulk', NULL, 'maulik@laptop.com', NULL, 90000, 9988776655, 'K', NULL);
+
+-- Renaming Column
+ALTER TABLE Employees
+CHANGE COLUMN Email EmailID varchar(75);
+
+SELECT * FROM Employees;
+
+-- ALTER TABLE Drop Coloumn
+ALTER TABLE Employees
+DROP COLUMN DateOfBirth;
+
+ALTER TABLE Employees
+DROP COLUMN MiddleName, 
+DROP COLUMN HireDate;
