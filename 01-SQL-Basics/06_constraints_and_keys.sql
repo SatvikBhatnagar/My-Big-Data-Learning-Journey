@@ -102,3 +102,42 @@ INSERT INTO person VALUES (first_name, last_name, age) VALUES ('Satvik', 'Bhatna
 
 -- Gives error : SQL Error [1062] [23000]: (conn=10) Duplicate entry 'Bhatnagar' for key 'last_name'
 
+-- Default : Provides a default value for a column when none is specified during insertion
+CREATE TABLE members(
+	id int AUTO_INCREMENT PRIMARY KEY,
+	first_name varchar(25) NOT NULL,
+	last_name varchar(25) NOT NULL,
+	email varchar(25) UNIQUE,
+	salary int DEFAULT 22000
+) AUTO_INCREMENT = 100;
+
+DESC members;
+
+INSERT INTO members (first_name, last_name, email) 
+VALUES
+('Satvik', 'Bhatnagar', 'satvik@variable.com'),
+('Maulik', 'Bhatnagar', 'maulik@variable.com');
+
+SELECT * FROM members;
+
+-- Index : Improves the speed of data retrieval operation on a table
+CREATE INDEX idx_firstName on members(first_name);
+
+DESC members;
+
+-- Composit Key : A primary key that consists of two or more coloumns, used to uniquely identify records in a table.
+CREATE TABLE enrollment(
+	studentID int,
+	courseID int,
+	enrollmentDate date,
+	Primary Key(studentID, courseID)
+	);
+
+DESC enrollment;
+
+INSERT INTO enrollment values(1,1, "2024-10-09");
+
+SELECT * FROM enrollment;
+
+INSERT INTO enrollment values(1,1, "2024-10-10"); -- Error : SQL Error [1062] [23000]: (conn=5) Duplicate entry '1-1' for key 'PRIMARY'
+INSERT INTO enrollment values(1,2, "2024-10-09");
